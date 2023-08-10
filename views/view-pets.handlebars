@@ -1,0 +1,128 @@
+<!-- CompanionConnect/views/view-pets.handlebars -->
+<div class="d-flex flex-column min-vh-100">
+    <div class="container flex-grow-1 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <!-- Pet Display Card -->
+                <div class="card shadow-lg mt-5 mb-5">
+<!-- Card Header: Display Title -->
+<div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-paw mr-2"></i>
+                            View All Pets Here!
+                        </h4>
+                    </div>
+                    <!-- Card Body: Contains Pet Photos or Message if No Photos Found -->
+                    <div class="card-body pb-4">
+                        {{#if petPhotos.length}}
+                            <div class="row">
+                                <!-- Iterate Over Each Pet Photo for Display -->
+                                {{#each petPhotos}}
+                                    <div class="col-12 col-lg-4 mb-5">
+                                        <div class="card shadow">
+                                            <!-- Pet Image Container -->
+                                            <img src="{{image_url}}" class="card-img-top img-fluid img-thumbnail mx-auto d-block" alt="Pet Photo">
+                                            <!-- Pet Details Container -->
+                                            <div class="text-content flex-grow-1 d-flex flex-column justify-content-center align-items-center p-3">
+                                                <h5 class="card-title font-weight-bold mb-2">{{pet_name}}</h5>
+                                                <!-- Displaying Essential Pet Details -->
+                                                <p class="card-text mb-1"><strong>Age:</strong> {{age}} old</p>
+                                                <p class="card-text mb-1"><strong>Location:</strong> {{location}}</p>
+                                                <p class="card-text mb-1"><strong>Breed:</strong> {{breed}}</p>
+                                                <p class="card-text mb-2"><strong>About:</strong> {{message}}</p>
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#commentsCollapse{{@index}}" aria-expanded="false" aria-controls="commentsCollapse{{@index}}">
+                                                <i class="fas fa-comments"></i> Comments
+                                                </button>
+<!-- Comment Section: Display or Submit Comments -->
+<div class="collapse mt-4" id="commentsCollapse{{@index}}">
+    {{#if this.comments}}
+        <div class="card">
+            <div class="card-header bg-light">
+                Comments
+            </div>
+            <ul class="list-group list-group-flush">
+                <!-- Iterate Over Each Comment -->
+                {{#each this.comments}}
+                    <li class="list-group-item">
+                        {{this.content}}
+                        <!-- Conditional Display for Comment Deletion if Owner -->
+                        {{#if (and (isCommentOwner this.user_id currentUser.id))}}
+                            <form action="/delete-comment/{{this.id}}" method="POST" class="float-right">
+                                <button type="submit" class="btn btn-link btn-sm text-danger">Delete</button>
+                            </form>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{else}}
+        <p class="mt-2">No comments available.</p>
+    {{/if}}
+    <!-- Comment Submission Form -->
+    <form action="/submit-comment/{{id}}" method="POST" class="comment-form mt-3">
+        <div class="input-group">
+            <textarea class="form-control" name="comment" placeholder="Add a comment..." rows="3"></textarea>
+        </div>
+        <div class="button-group mt-2">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fas fa-paper-plane"></i> Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        {{else}}
+                            <!-- Display Message if No Pet Photos Found -->
+                            <p class="text-center">No pet photos found.</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light" id="bottomNavbar">
+        <a class="navbar-brand">Companion Connect <i class="fas fa-paw"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbarItems" aria-controls="bottomNavbarItems" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Bottom Navbar Items -->
+        <div class="collapse navbar-collapse" id="bottomNavbarItems">
+            <ul class="navbar-nav ml-auto">
+                <!-- Top Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-arrow-up"></i> Top</a>
+                </li>
+                <!-- Dashboard Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <!-- Upload Pets Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/post"><i class="fas fa-upload"></i> Upload Your Pets</a>
+                </li>
+                <!-- View Pets Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/your-pets"><i class="fas fa-paw"></i> View Your Pets</a>
+                </li>
+                <!-- Dropdown for Settings -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Settings
+                    </a>
+                    <!-- Dropdown Menu Items for Settings -->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/account-settings"><i class="fas fa-cog"></i> Account Settings</a>
+                        <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

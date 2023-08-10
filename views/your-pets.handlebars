@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      {{#if pets.length}}
+        {{#each pets}}
+          <div class="card mt-3">
+            <div class="card-header bg-primary text-white">
+              <h4>{{this.pet_name}}</h4>
+            </div>
+            <div class="card-body text-center">
+              <img src="{{this.image_url}}" alt="{{this.pet_name}}" class="img-fluid rounded mb-3">
+              <p>{{this.message}}</p>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <div class="card mt-3">
+          <div class="card-header bg-primary text-white">
+            <h4>No pet photos found</h4>
+          </div>
+          <div class="card-body text-center">
+            <p>Sorry, you haven't uploaded any pet photos yet.</p>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+      <!-- Bottom Navigation Bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light" id="bottomNavbar">
+        <a class="navbar-brand">Companion Connect <i class="fas fa-paw"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bottomNavbarItems" aria-controls="bottomNavbarItems" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Bottom Navbar Items -->
+        <div class="collapse navbar-collapse" id="bottomNavbarItems">
+            <ul class="navbar-nav ml-auto">
+                <!-- Top Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-arrow-up"></i> Top</a>
+                </li>
+                <!-- Dashboard Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <!-- Upload Pets Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/post"><i class="fas fa-upload"></i> Upload Your Pets</a>
+                </li>
+                <!-- View Pets Navigation Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/view-pets"><i class="fas fa-paw"></i> View Pets</a>
+                </li>
+                <!-- Dropdown for Settings -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Settings
+                    </a>
+                    <!-- Dropdown Menu Items for Settings -->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/account-settings"><i class="fas fa-cog"></i> Account Settings</a>
+                        <a class="dropdown-item text-danger" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

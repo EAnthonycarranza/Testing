@@ -1,0 +1,27 @@
+-- Drop the tables if they exist
+DROP TABLE IF EXISTS Animals;
+DROP TABLE IF EXISTS Users;
+
+CREATE DATABASE IF NOT EXISTS CompanionConnect_db;
+
+USE CompanionConnect_db;
+
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_admin BOOLEAN DEFAULT false
+);
+
+CREATE TABLE Animals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    species VARCHAR(255) NOT NULL,
+    age INT,
+    description TEXT,
+    image VARCHAR(255),
+    adopted BOOLEAN DEFAULT false
+);

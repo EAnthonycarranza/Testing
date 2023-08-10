@@ -1,0 +1,255 @@
+/* public/css/style.css */
+
+body {
+    background: linear-gradient(to bottom, #e0f7ff, #e7f3fa, #eff0f7, #f5f5f5, #e0f7ff);
+    background-size: 100% 100vh; /* This ensures that the gradient spans the full height of the viewport and repeats seamlessly */
+    height: 100%; /* Changed from 100vh to 100% so that if content overflows the height of the viewport, the background still covers the entire body */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Providing a default font-family */
+}
+
+
+.card {
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px; /* Softening the card corners */
+}
+
+.card-img-top.img-thumbnail {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px; /* Matching border radius with the card */
+}
+
+.btn-primary {
+    background-image: linear-gradient(to bottom, #59a9f8, #80c3ff); /* From a soft blue to a slightly lighter blue */
+    border: none;
+    border-radius: 8px;
+    color: #ffffff; /* Ensuring the text on the button is white for good contrast */
+    transition: transform 0.3s ease; /* Existing transition for a subtle scale effect */
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(to bottom, #4997e5, #72b8ff); /* Slightly darker shades for hover effect */
+    transform: scale(1.05); /* Existing scale effect on hover */
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid #80c3ff; /* Border color matching the end gradient of our btn-primary */
+    color: #80c3ff; /* Text color matching the border */
+    border-radius: 8px; /* Matching radius with btn-primary */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for smooth color change */
+}
+
+.btn-outline-primary:hover {
+    background-color: #80c3ff; /* Background color on hover */
+    color: #ffffff; /* Text turns white on hover for contrast */
+    border-color: #59a9f8; /* Slightly darker shade for hover effect */
+}
+
+.navbar-light.bg-light {
+    background-image: linear-gradient(to bottom, #f8f9fa, #e2e6e9);
+}
+
+/* Input styling */
+.form-control {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+
+
+/* Font Awesome Icons */
+.position-relative > i {
+    color: #aaa;
+    z-index: 2;
+}
+
+textarea.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.hide-nav {
+    transform: translateY(100%); /* This will hide it below the viewport */
+    transition: transform 0.3s ease-out; /* This is the animation effect */
+}
+
+#bottomNavbar {
+    transition: transform 0.3s ease-out;
+}
+
+.menu-tab {
+    z-index: 1030;
+    background-color: rgba(240, 240, 240, 0.95); /* Lightening the background a bit */
+    border-top: 3px solid #007bff;
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Adding shadow for elevation */
+}
+
+.modal-content {
+    border-radius: .25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .5);
+}
+
+.pet-header {
+    background: linear-gradient(135deg, #5e72e4, #825ee4);
+    color: #FFF;
+  }
+  
+  .pet-card {
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+  }
+  
+  .comment-form {
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+  .comment-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+  }
+
+  
+  .btn-enhanced {
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-enhanced:hover {
+    background-color: #3a50c7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .collapsing {
+    transition-duration: 0.4s;  /* adjust as needed */
+}
+
+  .nav-link i {
+    margin-right: 0.5rem;
+  }
+  
+  .arrow-collapse {
+    display: none;
+}
+
+.navbar.fixed-bottom {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-section {
+    background-color: rgba(255, 255, 255, 0.6); /* 60% opacity white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    backdrop-filter: blur(5px); /* Adds a blur effect if supported by the browser */
+}
+
+/* Custom Input and Textarea Styles */
+.custom-input, .custom-textarea {
+    border: 1px solid #ced4da;
+    border-radius: 0.35rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: border 0.3s;
+}
+
+.custom-input:focus, .custom-textarea:focus {
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+.checkmark-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-text {
+    margin-top: 10px; /* Adjust as needed */
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #7ac142;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #7ac142;
+    }
+}
+
+@media (max-width: 320px) {
+    h5.card-title {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        margin: 0.5rem 0;
+    }
+
+    .text-content p {
+        font-size: 0.8rem;
+    }
+
+    /* Consider adding more mobile optimizations as needed */
+}

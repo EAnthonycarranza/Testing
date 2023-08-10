@@ -1,0 +1,89 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5 shadow-lg">
+                <div class="card-header bg-primary text-white d-flex align-items-center">
+                    <i class="fas fa-camera mr-2"></i>
+                    <h4>Upload Your Pets!</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">
+                        <div class="mb-3">
+                            <label for="petPhoto" class="form-label"><i class="fas fa-image mr-1"></i>Select a photo:</label>
+                            <input type="file" class="form-control custom-input" id="petPhoto" name="petPhoto" accept="image/*" required>
+                            <small class="form-text text-muted">Max file size: 1MB</small>
+                            <img id="imagePreview" src="#" alt="Selected Image" style="display: none; max-width: 100%; margin-top: 15px;">
+                            <p id="error-message" class="mt-2 text-danger"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="petName" class="form-label"><i class="fas fa-dog mr-1"></i>Name:</label>
+                            <input type="text" class="form-control custom-input" id="petName" name="petName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label"><i class="fas fa-birthday-cake mr-1"></i>Age (in years):</label>
+                            <input type="number" class="form-control custom-input" id="age" name="age" required min="0" max="99" placeholder="Enter age in years">
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label"><i class="fas fa-map-marker-alt mr-1"></i>Location:</label>
+                            <input type="text" class="form-control custom-input" id="location" name="location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="breed" class="form-label"><i class="fas fa-paw mr-1"></i>Breed:</label>
+                            <input type="text" class="form-control custom-input" id="breed" name="breed" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label"><i class="fas fa-info-circle mr-1"></i>About:</label>
+                            <textarea class="form-control custom-textarea" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-upload mr-2"></i>Upload & Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+document.getElementById('petPhoto').addEventListener('change', function() {
+    const MAX_SIZE_MB = 1;
+    const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
+
+    if (this.files[0].size > MAX_SIZE_BYTES) {
+        document.getElementById('error-message').textContent = `File size should be less than ${MAX_SIZE_MB}MB`;
+        this.value = ''; // clear the file input
+
+        // Also clear the image preview when the file input is cleared
+        const previewImage = document.getElementById('imagePreview');
+        previewImage.src = "#";
+        previewImage.style.display = 'none';
+
+    } else {
+        document.getElementById('error-message').textContent = '';
+
+        // Show the image preview
+        const file = this.files[0];
+        if (file && file.type.match('image.*')) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const previewImage = document.getElementById('imagePreview');
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    if (document.getElementById('error-message').textContent !== '') {
+        event.preventDefault();
+    }
+});
+
+    </script>
+</div>
